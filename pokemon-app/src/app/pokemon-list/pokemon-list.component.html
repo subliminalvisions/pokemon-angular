@@ -1,0 +1,11 @@
+<h1 *ngIf="!pokemonList">Retrieving Pokemon Data...</h1>
+
+<div>
+  <div *ngFor="let pokemon of pokemonList">
+    <div>
+      <img src="{{pokemon.getImage()}}">
+      <p>#{{pokemon.id}}</p>
+      <span>{{pokemon.capitalizeName()}}</span>
+    </div>
+  </div>
+</div>

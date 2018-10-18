@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  urls: {
+    pokemon: 'http://pokeapi.salestock.net/api/v2/pokedex/2/',
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
+  }
 };
 
 /*
