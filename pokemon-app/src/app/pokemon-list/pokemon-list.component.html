@@ -1,11 +1,18 @@
 <h1 *ngIf="!pokemonList">Retrieving Pokemon Data...</h1>
 
 <div>
-  <div *ngFor="let pokemon of pokemonList">
-    <div>
-      <img src="{{pokemon.getImage()}}">
-      <p>#{{pokemon.id}}</p>
-      <span>{{pokemon.capitalizeName()}}</span>
+  <div class="container content">
+    <div class="row">
+      <div class="col-md-2" *ngFor="let pokemon of pokemonList">
+        <div class="card-deck">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{pokemon.getImage()}}" alt="{{pokemon.capitalizeName()}}">
+            <div class="card-body">
+              <h5 class="card-title">#{{pokemon.id}} {{pokemon.capitalizeName()}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
