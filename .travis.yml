@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "stable"
+script:
+  - cd /pokemon-app
+  - npm install
+  - ng test
+on:
+  branch: master
