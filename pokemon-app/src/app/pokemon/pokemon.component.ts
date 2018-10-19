@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { Pokemon } from '../pokemon-list/pokemon';
 import { ActivatedRoute } from '@angular/router';
+import { FavoritePokemonService} from '../favorite-pokemon.service';
 
 @Component({
   selector: 'app-pokemon',
@@ -10,8 +11,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PokemonComponent implements OnInit {
   pokemon = new Pokemon();
+  isChecked = false;
 
-  constructor(private pokemonService: PokemonService, private route: ActivatedRoute) { }
+  constructor(
+    private pokemonService: PokemonService,
+    private route: ActivatedRoute,
+    private favoritePokemon: FavoritePokemonService) { }
 
   ngOnInit() {
     const id = this.route.snapshot.params['id'];
@@ -19,5 +24,14 @@ export class PokemonComponent implements OnInit {
     this.pokemonService.getPokemonInfo(id)
       .then((pokemon) => { this.pokemon = pokemon; });
   }
+
+  onChange(event, pokemon) {
+    if (event.target.checked) {
+        this.favoritePokemon.add(pokemon.id);
+        this.isChecked = event.target.checked;
+    } else {
+        this.favoritePokemon.remove(pokemon.id);
+    }
+}
 
 }

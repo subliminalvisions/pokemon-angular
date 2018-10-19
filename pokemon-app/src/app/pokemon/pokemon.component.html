@@ -8,15 +8,20 @@
           <div class="card flex-row flex-wrap w-100 ">
             <div class="card-body">
               <img class="card-img-top" src="{{ pokemon.getImage() }}" alt="{{pokemon.capitalizeName()}}">
+
+              <label class="checkbox-container">Favorite
+                <input type="checkbox" (change)="onChange($event, pokemon)" [checked]="favoritePokemon.has(pokemon.id)" />
+                <span class="checkmark"></span>
+              </label>
             </div>
 
             <div class="card-body bg-light">
               <h5 class="card-subtitle">Types:</h5>
-              <ul class="list-unstyled">
-                <li *ngFor="let type of pokemon.types">
-                  <p>{{ type }}</p>
-                </li>
-              </ul>
+              <div>
+                <div class="type type-{{ type }} text-center" *ngFor="let type of pokemon.types">
+                  {{ type }}
+                </div>
+              </div>
             </div>
 
             <div class="card-body bg-light">

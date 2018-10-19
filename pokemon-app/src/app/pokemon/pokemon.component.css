@@ -1,0 +1,125 @@
+
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  font-family: FontAwesome; 
+  content: "\f015";
+}
+
+
+.checkbox-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+
+.checkbox-container input:checked ~ .checkmark {
+  font-family: FontAwesome; 
+  content: "\&#xf005;";
+  background-color: #2196F3;
+}
+
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.type-normal {
+  background-color: #a8a878;
+}
+
+.type-fire {
+  background-color: #f08030;
+}
+
+.type-fighting {
+  background-color: #c03028;
+}
+
+.type-water {
+  background-color: #6890f0;
+}
+
+.type-flying {
+  background-color: #a890f0;
+}
+
+.type-grass {
+  background-color: #78c850;
+}
+
+.type-poison {
+  background-color: #a040a0;
+}
+
+.type-electric {
+  background-color: #f8d030;
+}
+
+.type-ground {
+  background-color: #e0c068;
+}
+
+.type-psychic {
+  background-color: #f85888;
+}
+
+.type-rock {
+  background-color: #b8a038;
+}
+
+.type-ice {
+  background-color: #98d8d8;
+}
+
+.type-bug {
+  background-color: #a8b820;
+}
+
+.type-dragon {
+  background-color: #7038f8;
+}
