@@ -18,12 +18,12 @@ export class PokemonService {
   }
 
   getPokemonList() {
-    return this.http.get(environment.urls.pokemon, this.getHeaders())
+    return this.http.get(environment.urls.pokemonList, this.getHeaders())
       .toPromise()
       .then((res: Response) => {
-        let data = res.json();
+        let info = res.json();
         let pokemonList = [];
-        data.pokemon_entries.forEach((entry) => {
+        info.pokemon_entries.forEach((entry) => {
           let pokemon = new Pokemon();
           pokemon.name = entry.pokemon_species.name;
           pokemon.id = entry.entry_number;
@@ -31,6 +31,30 @@ export class PokemonService {
         });
         return pokemonList;
 
+      });
+  }
+
+  getPokemonInfo(id: number) {
+    return this.http.get(environment.urls.pokemon + id + '/', this.getHeaders())
+      .toPromise()
+      .then((res: Response) => {
+        let info = res.json();
+        let pokemon = new Pokemon();
+        pokemon.name = info.name;
+        pokemon.id = info.id;
+
+        info.types.forEach((types) => {
+          pokemon.types.push(types.type.name);
+        });
+
+        info.stats.forEach((stats) => {
+          pokemon.stats.push({
+            name: stats.stat.name,
+            value: stats.base_stat
+          });
+        });
+
+        return pokemon;
       });
   }
 }

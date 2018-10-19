@@ -1,0 +1,36 @@
+<app-layout>
+  <div>
+    <div class="container content ">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+          <h1>#{{ pokemon.id }} {{ pokemon.capitalizeName() }}</h1>
+
+          <div class="card flex-row flex-wrap w-100 ">
+            <div class="card-body">
+              <img class="card-img-top" src="{{ pokemon.getImage() }}" alt="{{pokemon.capitalizeName()}}">
+            </div>
+
+            <div class="card-body bg-light">
+              <h5 class="card-subtitle">Types:</h5>
+              <ul class="list-unstyled">
+                <li *ngFor="let type of pokemon.types">
+                  <p>{{ type }}</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card-body bg-light">
+              <h5 class="card-text">Stats:</h5>
+              <ul class="list-unstyled">
+                <li *ngFor="let stat of pokemon.stats">
+                  {{ stat.name }}: {{ stat.value }}
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-layout>
