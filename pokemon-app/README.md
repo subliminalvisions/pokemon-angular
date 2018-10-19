@@ -1,27 +1,30 @@
-# PokemonApp
+# pokemon-angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
+[![Build Status](https://travis-ci.org/peferrera/pokemon-angular.svg?branch=master)](https://travis-ci.org/peferrera/pokemon-angular)
 
-## Development server
+An angular app that lists pokemon from pokeapi
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Requirements
 
-## Code scaffolding
+- Node.js (recommended: 10.x)
+- npm (recommended: 6.x)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Install
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+    $ git clone https://github.com/peferrera/pokemon-angular
+    $ cd pokemon-angular/pokemon-app && npm install
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    $ ng test
 
-## Running end-to-end tests
+## Start & watch
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+    $ ng serve
 
-## Further help
+## Build for production
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    $ ng build
+# PokemonApp
+
+    Navigate to `http://localhost:4200/`
