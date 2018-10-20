@@ -1,18 +1,16 @@
-<app-layout>
+<app-layout [isLoading]="isLoading">
   <div style="text-align:center">
     <h1>
       My Kanto Pokedex
     </h1>
-    <div class="row d-flex justify-content-center ">
+    <div *ngIf="!isLoading" class="row d-flex justify-content-center ">
       <ul class="pagination ">
         <li *ngFor="let page of pages" (click)="updatePage(page)" class="page-item"><a class="page-link" href="#">{{page.index}}</a></li>
       </ul>
     </div>
   </div>
-
-  <h1 *ngIf="!pokemonList">Retrieving Pokemon Data...</h1>
-
-  <div>
+  <app-pokemon-loading [isLoading]='isLoading'></app-pokemon-loading>
+  <div *ngIf="!isLoading">
     <div class="container content">
       <div class="row">
         <div class="col-md-2" *ngFor="let pokemon of pokemonGrid">
@@ -34,8 +32,6 @@
             </div>
           </div>
         </div>
-
-
       </div>
 
     </div>

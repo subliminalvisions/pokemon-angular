@@ -14,6 +14,8 @@ export class PokemonListComponent implements OnInit {
   /* Pokemons to show, used since feature page is broken */
   pokemonGrid: Pokemon[] = [];
 
+  isLoading: Boolean = true;
+
   pages: Array<Object> = [];
 
   constructor(
@@ -24,6 +26,7 @@ export class PokemonListComponent implements OnInit {
     this.pokemonService.getPokemonList()
       .then((pokemon) => {
         this.pages = [];
+        this.isLoading = false;
 
         const totalPages = Math.ceil(pokemon.length / 15);
 

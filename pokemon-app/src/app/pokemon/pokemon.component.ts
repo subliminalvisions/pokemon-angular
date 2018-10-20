@@ -12,6 +12,7 @@ import { FavoritePokemonService} from '../favorite-pokemon.service';
 export class PokemonComponent implements OnInit {
   pokemon = new Pokemon();
   isChecked = false;
+  isLoading = true;
 
   constructor(
     private pokemonService: PokemonService,
@@ -22,7 +23,10 @@ export class PokemonComponent implements OnInit {
     const id = this.route.snapshot.params['id'];
 
     this.pokemonService.getPokemonInfo(id)
-      .then((pokemon) => { this.pokemon = pokemon; });
+      .then((pokemon) => { 
+        this.pokemon = pokemon; 
+        this.isLoading = false;
+      });
   }
 
   onChange(event, pokemon) {
