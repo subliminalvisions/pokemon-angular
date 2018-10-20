@@ -5,6 +5,7 @@ export class Pokemon {
     id: number;
     types = [];
     stats = [];
+    isChecked = false;
 
     constructor() { }
 

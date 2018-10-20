@@ -3,26 +3,42 @@
     <h1>
       My Kanto Pokedex
     </h1>
+    <div class="row d-flex justify-content-center ">
+      <ul class="pagination ">
+        <li *ngFor="let page of pages" (click)="updatePage(page)" class="page-item"><a class="page-link" href="#">{{page.index}}</a></li>
+      </ul>
+    </div>
   </div>
-    
+
   <h1 *ngIf="!pokemonList">Retrieving Pokemon Data...</h1>
 
   <div>
     <div class="container content">
       <div class="row">
-        <div class="col-md-2" *ngFor="let pokemon of pokemonList">
+        <div class="col-md-2" *ngFor="let pokemon of pokemonGrid">
           <div class="card-deck">
-            <div class="card text-center" style="width: 18rem;">
-              <a [routerLink]="['/pokemon', pokemon.id]">
-              <img class="card-img-top" src="{{pokemon.getImage()}}" alt="{{pokemon.capitalizeName()}}">
-              <div class="card-body">
-                <h6 class="card-text">#{{pokemon.id}} {{pokemon.capitalizeName()}}</h6>
+            <div class="card text-center mt-2 mb-2" style="width: 18rem;">
+              <div class="card-header">
+                
+                <label class="checkbox-container">Favorite
+                  <input type="checkbox" (change)="onChange($event, pokemon)" [checked]="favoritePokemon.has(pokemon.id)" />
+                  <span class="checkmark {{pokemon.isChecked ? 'fa fa-star' : 'fa fa-star-o' }}"></span>
+                </label>
               </div>
+              <a [routerLink]="['/pokemon', pokemon.id]">
+                <img class="card-img-top" src="{{pokemon.getImage()}}" alt="{{pokemon.capitalizeName()}}">
+                <div class="card-body">
+                  <h6 class="card-text">#{{pokemon.id}} {{pokemon.capitalizeName()}}</h6>
+                </div>
               </a>
             </div>
           </div>
         </div>
+
+
       </div>
+
     </div>
+
   </div>
 </app-layout>

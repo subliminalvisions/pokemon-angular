@@ -3,13 +3,17 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 import { Pokemon } from './pokemon-list/pokemon';
+import { FavoritePokemonService } from './favorite-pokemon.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonService {
 
-  constructor(private http: Http) { }
+  constructor(
+    private http: Http,
+    private favoritePokemon: FavoritePokemonService) { }
 
   protected getHeaders() {
     const requestHeaders = new Headers();
@@ -27,6 +31,7 @@ export class PokemonService {
           let pokemon = new Pokemon();
           pokemon.name = entry.pokemon_species.name;
           pokemon.id = entry.entry_number;
+          pokemon.isChecked = this.favoritePokemon.has(pokemon.id) ? true : false;
           pokemonList.push(pokemon);
         });
         return pokemonList;
@@ -42,9 +47,10 @@ export class PokemonService {
         let pokemon = new Pokemon();
         pokemon.name = info.name;
         pokemon.id = info.id;
-
-        info.types.forEach((types) => {
-          pokemon.types.push(types.type.name);
+        pokemon.isChecked = this.favoritePokemon.has(pokemon.id) ? true : false;
+        
+        info.types.forEach((type) => {
+          pokemon.types.push(type.type.name);
         });
 
         info.stats.forEach((stats) => {
