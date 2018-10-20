@@ -23,7 +23,6 @@ export class PokemonListComponent implements OnInit {
   ngOnInit() {
     this.pokemonService.getPokemonList()
       .then((pokemon) => {
-        debugger;
         this.pages = [];
 
         const totalPages = Math.ceil(pokemon.length / 15);
