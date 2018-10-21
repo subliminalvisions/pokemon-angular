@@ -1,9 +1,13 @@
 <app-layout [isLoading]="isLoading">
+  <span *ngIf="error">
+    Loading failed
+  </span>
+
   <div style="text-align:center">
     <h1>
       My Kanto Pokedex
     </h1>
-    <div *ngIf="!isLoading" class="row d-flex justify-content-center ">
+    <div *ngIf="!isLoading && !error" class="row d-flex justify-content-center ">
       <ul class="pagination ">
         <li *ngFor="let page of pages" (click)="updatePage(page)" class="page-item"><a class="page-link" href="#">{{page.index}}</a></li>
       </ul>
@@ -17,7 +21,7 @@
           <div class="card-deck">
             <div class="card text-center mt-2 mb-2" style="width: 18rem;">
               <div class="card-header">
-                
+
                 <label class="checkbox-container">Favorite
                   <input type="checkbox" (change)="onChange($event, pokemon)" [checked]="favoritePokemon.has(pokemon.id)" />
                   <span class="checkmark {{pokemon.isChecked ? 'fa fa-star' : 'fa fa-star-o' }}"></span>

@@ -18,6 +18,8 @@ export class PokemonListComponent implements OnInit {
 
   pages: Array<Object> = [];
 
+  error: Boolean = false;
+
   constructor(
     private pokemonService: PokemonService,
     private favoritePokemon: FavoritePokemonService) { }
@@ -37,6 +39,10 @@ export class PokemonListComponent implements OnInit {
         this.pokemonList = pokemon;
 
         this.updatePage({ index: 1 });
+      })
+      .catch(() => {
+        this.error = true;
+        this.isLoading = false;
       });
   }
 

@@ -1,7 +1,10 @@
 <app-layout [isFixedBottom]="true">
   <app-pokemon-loading [isLoading]='isLoading'></app-pokemon-loading>
-  
-  <div *ngIf="!isLoading">
+
+  <span *ngIf="error">
+    Loading failed
+  </span>
+  <div *ngIf="!isLoading && !error">
     <div class="container content ">
       <div class="row d-flex justify-content-center">
         <div class="col-md-6">
