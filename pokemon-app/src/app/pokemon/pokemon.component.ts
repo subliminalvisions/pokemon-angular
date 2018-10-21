@@ -37,9 +37,10 @@ export class PokemonComponent implements OnInit {
   onChange(event, pokemon) {
     if (event.target.checked) {
         this.favoritePokemon.add(pokemon.id);
-        this.isChecked = event.target.checked;
+        pokemon.isChecked = true;
     } else {
         this.favoritePokemon.remove(pokemon.id);
+        pokemon.isChecked = false;
     }
 }
 

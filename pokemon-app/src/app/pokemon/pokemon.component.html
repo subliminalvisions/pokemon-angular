@@ -10,15 +10,15 @@
         <div class="col-md-6">
           <h1>#{{ pokemon.id }} {{ pokemon.capitalizeName() }}</h1>
 
-          <div class="card flex-row flex-wrap w-100 ">
+          <div class="card flex-row flex-wrap w-100 text-center">
             <div class="card-body">
-              <img class="card-img-top" src="{{ pokemon.getImage() }}" alt="{{pokemon.capitalizeName()}}">
-
+              
               <label class="checkbox-container">Favorite
                 <input type="checkbox" (change)="onChange($event, pokemon)" [checked]="favoritePokemon.has(pokemon.id)" />
-                <span class="checkmark"></span>
+                <span class="checkmark {{pokemon.isChecked ? 'fa fa-star' : 'fa fa-star-o' }}"></span>
               </label>
-              
+
+              <img class="card-img-top" src="{{ pokemon.getImage() }}" alt="{{pokemon.capitalizeName()}}">
             </div>
 
             <div class="card-body bg-light">
