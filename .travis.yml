@@ -4,6 +4,7 @@ node_js:
 script:
   - cd ./pokemon-app
   - npm install
+  - ng lint
   - ng build --prod
 on:
   branch: master

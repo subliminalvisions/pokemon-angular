@@ -10,8 +10,10 @@ import { FavoritePokemonService} from '../favorite-pokemon.service';
   styleUrls: ['./pokemon.component.css']
 })
 export class PokemonComponent implements OnInit {
-  pokemon = new Pokemon();
-  isChecked = false;
+  pokemon: Pokemon = new Pokemon();
+  isChecked: Boolean = false;
+  isLoading: Boolean = true;
+  error: Boolean = false;
 
   constructor(
     private pokemonService: PokemonService,
@@ -22,15 +24,23 @@ export class PokemonComponent implements OnInit {
     const id = this.route.snapshot.params['id'];
 
     this.pokemonService.getPokemonInfo(id)
-      .then((pokemon) => { this.pokemon = pokemon; });
+      .then((pokemon) => {
+        this.pokemon = pokemon;
+        this.isLoading = false;
+      })
+      .catch(() => {
+        this.error = true;
+        this.isLoading = false;
+      });
   }
 
   onChange(event, pokemon) {
     if (event.target.checked) {
         this.favoritePokemon.add(pokemon.id);
-        this.isChecked = event.target.checked;
+        pokemon.isChecked = true;
     } else {
         this.favoritePokemon.remove(pokemon.id);
+        pokemon.isChecked = false;
     }
 }
 

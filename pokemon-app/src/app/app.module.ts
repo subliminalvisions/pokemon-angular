@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
@@ -11,6 +11,7 @@ import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { UiModule } from './ui/ui.module';
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { FavoritePokemonService } from './favorite-pokemon.service';
+import { PokemonLoadingComponent } from './pokemon-loading/pokemon-loading.component';
 
 const routes: Routes = [
   { path: '', component: PokemonListComponent },
@@ -21,11 +22,12 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     PokemonListComponent,
-    PokemonComponent
+    PokemonComponent,
+    PokemonLoadingComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     UiModule,
     RouterModule.forRoot(routes),
     FormsModule

@@ -14,7 +14,11 @@ export class PokemonListComponent implements OnInit {
   /* Pokemons to show, used since feature page is broken */
   pokemonGrid: Pokemon[] = [];
 
+  isLoading: Boolean = true;
+
   pages: Array<Object> = [];
+
+  error: Boolean = false;
 
   constructor(
     private pokemonService: PokemonService,
@@ -24,6 +28,7 @@ export class PokemonListComponent implements OnInit {
     this.pokemonService.getPokemonList()
       .then((pokemon) => {
         this.pages = [];
+        this.isLoading = false;
 
         const totalPages = Math.ceil(pokemon.length / 15);
 
@@ -34,6 +39,10 @@ export class PokemonListComponent implements OnInit {
         this.pokemonList = pokemon;
 
         this.updatePage({ index: 1 });
+      })
+      .catch(() => {
+        this.error = true;
+        this.isLoading = false;
       });
   }
 

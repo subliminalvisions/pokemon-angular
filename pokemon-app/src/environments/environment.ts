@@ -5,9 +5,9 @@
 export const environment = {
   production: false,
   urls: {
-    pokemonList: 'http://pokeapi.salestock.net/api/v2/pokedex/2/',
+    pokemonList: 'https://pokeapi.co/api/v2/pokedex/2/',
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
-    pokemon: 'http://pokeapi.salestock.net/api/v2/pokemon/'
+    pokemon: 'https://pokeapi.co/api/v2/pokemon/'
   }
 };
 
