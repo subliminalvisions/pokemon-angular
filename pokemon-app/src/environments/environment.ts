@@ -6,6 +6,9 @@ export const environment = {
   production: false,
   urls: {
     pokemonList: 'https://pokeapi.co/api/v2/pokedex/2/',
+    JohtopokemonList: 'https://pokeapi.co/api/v2/pokedex/3/',
+    HoennpokemonList: 'https://pokeapi.co/api/v2/pokedex/4/',
+    SinnohpokemonList: 'https://pokeapi.co/api/v2/pokedex/5/',
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
     pokemon: 'https://pokeapi.co/api/v2/pokemon/'
   }

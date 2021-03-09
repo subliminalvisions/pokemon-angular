@@ -20,19 +20,54 @@ export class PokemonService {
     return { headers: requestHeaders };
   }
 
+  urlToID(pokemonurl) {
+    // pokemonurl.match(/\/[0-9]+(?=\/)/gm);
+    // pokemonurl.match(/\/[0-9]+(?=\/)/gm).substring(1);
+    pokemonurl.match(/\/[0-9]+(?=\/)/gm).replace('/', '');
+    // .replace(/ 
+    console.log(pokemonurl);
+    return pokemonurl;
+  }
+  // remove this function later 
+
   getPokemonList() {
-    return this.http.get(environment.urls.pokemonList, this.getHeaders())
+    // pokemonList
+    // JohtopokemonList // HoennpokemonList
+    return this.http.get(environment.urls.JohtopokemonList, this.getHeaders())
       .toPromise()
       .then((res: HttpResponse<Pokemon>) => {
+
         let info = res;
+        // let fullurl = '';
         let pokemonList = [];
+
         info["pokemon_entries"].forEach((entry) => {
-          let pokemon = new Pokemon();
-          pokemon.name = entry.pokemon_species.name;
-          pokemon.id = entry.entry_number;
-          pokemon.isChecked = this.favoritePokemon.has(pokemon.id) ? true : false;
-          pokemonList.push(pokemon);
+          let newid = '';
+          let idnum: number;
+          newid = entry.pokemon_species.url.match(/\/[0-9]+(?=\/)/g).toString(); 
+          newid = newid.substring(1); 
+          idnum = parseInt(newid); 
+          
+            // only create Pokemon for Gen 2 ... testing 
+            // pokemon.id = entry.entry_number;
+            // pokemon.id = this.urlToID(entry.pokemon_species.url); 
+            // newid = entry.pokemon_species.url.match(/\/[0-9]+(?=\/)/g).replace('/', ''); 
+            // newid.replace('/', ''); 
+            // console.log(parseInt(newid));
+            // console.log(pokemon.name);
+              let pokemon = new Pokemon();
+              pokemon.name = entry.pokemon_species.name;
+              pokemon.id = parseInt(newid); 
+              
+              pokemon.isChecked = this.favoritePokemon.has(pokemon.id) ? true : false;
+              pokemonList.push(pokemon);
+              if (+(idnum) >= +(151)) {
+              }
+
+
+
         });
+        console.log(pokemonList);
         return pokemonList;
 
       });
